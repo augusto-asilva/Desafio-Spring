@@ -2,10 +2,11 @@ package com.meli.desafiospring.domain;
 
 public class User {
 
-    private int id;
+    private Integer id;
     private String name;
+    
 
-    public User(int id, String name) {
+    public User(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -13,11 +14,11 @@ public class User {
     public User() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

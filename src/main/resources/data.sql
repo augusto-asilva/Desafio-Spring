@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS USERS;
-DROP TABLE IF EXISTS FOLLOWERS;
+DROP TABLE IF EXISTS USERFOLLOWER;
 DROP TABLE IF EXISTS PRODUCTS;
 DROP TABLE IF EXISTS POSTS;
 
@@ -13,14 +13,14 @@ INSERT INTO USERS (id, name) VALUES
   (1, 'Mark Zuckerberg'),
   (2, 'Angelina Jolie');
   
-CREATE TABLE FOLLOWERS (
+CREATE TABLE USERFOLLOWER (
   user_id INT,
   following_id INT,
   FOREIGN KEY(user_id) REFERENCES USERS(id),
   FOREIGN KEY(following_id) REFERENCES USERS(id)
 );
 
-INSERT INTO FOLLOWERS (user_id, following_id) VALUES
+INSERT INTO USERFOLLOWER (user_id, following_id) VALUES
   (1, 0),
   (1, 2),
   (0, 2),
@@ -36,7 +36,7 @@ CREATE TABLE PRODUCTS (
 );
 
 INSERT INTO PRODUCTS (id, name, type, brand, color, notes) VALUES
-  (0, 'Bicicleta', 'Corrida', 'Caloi', 'Vermelha', 'Bicicleta para Corrida'),
+  (0, 'Bicicleta', 'Corrida', 'Caloi', 'Red', 'Bicicleta para Corrida'),
   (1, 'Headset RGB Inalámbrico', 'Gamer', 'Razer','Green with RGB', 'Sin Bateria'),
   (2, 'Cadeira Gamer', 'Gamer', 'Racer', 'Red & Black', 'Special Edition'),
   (3, 'MacBook Pro', 'Computing', 'Apple', 'Silver', 'touch screen');

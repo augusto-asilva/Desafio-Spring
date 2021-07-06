@@ -4,15 +4,15 @@ import java.time.LocalDateTime;
 
 public class Post {
 
-    private int id;
+    private Integer id;
 
     private LocalDateTime date;
 
     private Product product;
 
-    private int userId;
+    private Integer userId;
 
-    public Post(int id, LocalDateTime date, Product product, int userId) {
+    public Post(Integer id, LocalDateTime date, Product product, Integer userId) {
         this.id = id;
         this.date = date;
         this.product = product;
@@ -22,11 +22,11 @@ public class Post {
     public Post() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,11 +46,11 @@ public class Post {
         this.product = product;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 }
