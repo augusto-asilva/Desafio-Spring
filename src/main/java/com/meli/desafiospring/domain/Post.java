@@ -1,18 +1,29 @@
 package com.meli.desafiospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "POSTS")
 public class Post {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private LocalDateTime date;
 
+    @OneToOne
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
-    private Integer userId;
+    @OneToOne
+    @JoinColumn(name = "USER_ID")
+    private User userId;
 
-    public Post(Integer id, LocalDateTime date, Product product, Integer userId) {
+    public Post(Integer id, LocalDateTime date, Product product, User userId) {
         this.id = id;
         this.date = date;
         this.product = product;
@@ -46,11 +57,11 @@ public class Post {
         this.product = product;
     }
 
-    public Integer getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 }

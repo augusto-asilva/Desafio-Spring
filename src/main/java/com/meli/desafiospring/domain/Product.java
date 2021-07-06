@@ -3,7 +3,14 @@ package com.meli.desafiospring.domain;
 import com.meli.desafiospring.domain.enums.Color;
 import com.meli.desafiospring.domain.enums.ProductCategory;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "PRODUCTS")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private ProductCategory type;
