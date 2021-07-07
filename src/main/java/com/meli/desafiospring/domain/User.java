@@ -1,5 +1,7 @@
 package com.meli.desafiospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class User {
     private Integer id;
     private String name;
 
+    @JsonIgnoreProperties("followings")
     @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToMany
     @JoinTable(
@@ -19,7 +22,7 @@ public class User {
             joinColumns = @JoinColumn(name = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "FOLLOWING_ID"))
     private List<User> followings;
-    
+
 
     public User(Integer id, String name) {
         this.id = id;
@@ -29,7 +32,7 @@ public class User {
     public User() {
     }
 
-    public void addFollowing(User user){
+    public void addFollowing(User user) {
         this.followings.add(user);
     }
 
@@ -47,5 +50,9 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<User> getFollowings() {
+        return followings;
     }
 }

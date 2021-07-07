@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class AlreadyFollowingExceptionHandler {
 
     @ExceptionHandler(AlreadyFollowingException.class)
-    public ResponseEntity<ExceptionDTO> defaultHandler(AlreadyFollowingException exception){
+    public ResponseEntity<ExceptionDTO> defaultHandler(AlreadyFollowingException exception) {
         return ResponseEntity.badRequest().body(new ExceptionDTO(exception.getMessage()));
     }
 }

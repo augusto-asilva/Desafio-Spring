@@ -17,7 +17,7 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public void follow(Integer userId, Integer followingId){
+    public void follow(Integer userId, Integer followingId) {
         User user = this.findById(userId);
 
         User userToFollow = this.findById(followingId);
@@ -26,7 +26,7 @@ public class UserService {
 
         try {
             repository.save(user);
-        }catch (DataIntegrityViolationException exception){
+        } catch (DataIntegrityViolationException exception) {
             throw new AlreadyFollowingException("Usuario: " + user.getName() + " já segue o vendedor: " + userToFollow.getName());
         }
     }
@@ -40,9 +40,7 @@ public class UserService {
     }
 
 
-
-
-    private User findById(Integer userId){
+    private User findById(Integer userId) {
         Optional<User> user = repository.findById(userId);
 
         if (user.isPresent())
@@ -50,5 +48,12 @@ public class UserService {
 
         throw new UserNotFoundException("Usuario não encontrado com o id: " + userId);
 
+    }
+
+
+    public User getFollowers(Integer userId) {
+        var dto = repository.findById(userId);
+
+        return dto.get();
     }
 }
