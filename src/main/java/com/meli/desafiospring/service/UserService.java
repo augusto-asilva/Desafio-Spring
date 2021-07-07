@@ -2,6 +2,7 @@ package com.meli.desafiospring.service;
 
 import com.meli.desafiospring.domain.User;
 import com.meli.desafiospring.dto.FollowerCountDTO;
+import com.meli.desafiospring.dto.UserFollowersDTO;
 import com.meli.desafiospring.exception.AlreadyFollowingException;
 import com.meli.desafiospring.exception.UserNotFoundException;
 import com.meli.desafiospring.repository.UserRepository;
@@ -50,5 +51,12 @@ public class UserService {
 
         throw new UserNotFoundException("Usuario não encontrado com o id: " + userId);
 
+    }
+
+
+    public User getFollowers(Integer userId){
+        var dto =  repository.findById(userId);
+
+        return dto.get();
     }
 }

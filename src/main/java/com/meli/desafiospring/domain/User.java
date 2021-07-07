@@ -1,5 +1,9 @@
 package com.meli.desafiospring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.meli.desafiospring.dto.UserFollowersDTO;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +16,7 @@ public class User {
     private Integer id;
     private String name;
 
+    @JsonIgnoreProperties("followings")
     @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToMany
     @JoinTable(
@@ -47,5 +52,9 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<User> getFollowings() {
+        return followings;
     }
 }
