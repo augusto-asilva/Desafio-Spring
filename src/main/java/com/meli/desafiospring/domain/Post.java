@@ -1,9 +1,8 @@
 package com.meli.desafiospring.domain;
 
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @SuppressWarnings("JpaDataSourceORMInspection")
@@ -24,12 +23,11 @@ public class Post {
     @JsonProperty("detail")
     private Product product;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToOne
 //    @JoinColumn(name = "user_id")
     private User user;
 
-    public Post(Integer id, LocalDate date, Product product , User user) {
+    public Post(Integer id, LocalDate date, Product product, User user) {
         this.id = id;
         this.date = date;
         this.product = product;
@@ -70,5 +68,5 @@ public class Post {
     public void setUser(User user) {
         this.user = user;
     }
-    
+
 }

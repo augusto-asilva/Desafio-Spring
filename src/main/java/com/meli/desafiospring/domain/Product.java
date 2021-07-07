@@ -17,9 +17,9 @@ public class Product {
     private String name;
     private String type;
     private String brand;
-    
+
     private String color;
-    
+
     private String notes;
 
     public Product(int id, String name, String type, String brand, String color, String notes) {
