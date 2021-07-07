@@ -68,4 +68,8 @@ public class User {
     public List<User> getFollowers() {
         return followers;
     }
+
+    public boolean removeFollower(User userToUnfollow) {
+        return this.followers.remove(userToUnfollow);
+    }
 }
