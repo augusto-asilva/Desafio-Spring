@@ -2,9 +2,12 @@ package com.meli.desafiospring.service;
 
 import com.meli.desafiospring.domain.User;
 import com.meli.desafiospring.dto.FollowerCountDTO;
+import com.meli.desafiospring.dto.UserFollowersDTO;
+import com.meli.desafiospring.dto.UserFollowingsDTO;
 import com.meli.desafiospring.exception.AlreadyFollowingException;
 import com.meli.desafiospring.exception.UserNotFoundException;
 import com.meli.desafiospring.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,8 @@ public class UserService {
 
     @Autowired
     private UserRepository repository;
+
+    private static final ModelMapper MAPPER = new ModelMapper();
 
     public void follow(Integer userId, Integer followingId) {
         User user = this.findById(userId);
@@ -51,9 +56,13 @@ public class UserService {
     }
 
 
-    public User getFollowers(Integer userId) {
-        var dto = repository.findById(userId);
+    public UserFollowingsDTO getFollowing(Integer userId) {
+        User user = this.findById(userId);
+        return MAPPER.map(user, UserFollowingsDTO.class);
+    }
 
-        return dto.get();
+    public UserFollowersDTO getFollowers(Integer userId) {
+        User user = this.findById(userId);
+        return MAPPER.map(user, UserFollowersDTO.class);
     }
 }

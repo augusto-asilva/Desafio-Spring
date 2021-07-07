@@ -1,7 +1,8 @@
 package com.meli.desafiospring.controller;
 
-import com.meli.desafiospring.domain.User;
 import com.meli.desafiospring.dto.FollowerCountDTO;
+import com.meli.desafiospring.dto.UserFollowersDTO;
+import com.meli.desafiospring.dto.UserFollowingsDTO;
 import com.meli.desafiospring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,9 +29,15 @@ public class UserController {
     }
 
 
+    @GetMapping("{userId}/followed/list")
+    @ResponseStatus(HttpStatus.OK)
+    public UserFollowingsDTO getFollowed(@PathVariable Integer userId) {
+        return service.getFollowing(userId);
+    }
+
     @GetMapping("{userId}/followers/list")
     @ResponseStatus(HttpStatus.OK)
-    public User getFollowers(@PathVariable Integer userId) {
+    public UserFollowersDTO getFollowers(@PathVariable Integer userId) {
         return service.getFollowers(userId);
     }
 

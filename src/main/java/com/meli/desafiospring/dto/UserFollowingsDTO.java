@@ -7,47 +7,48 @@ import com.meli.desafiospring.domain.User;
 
 import java.util.List;
 
-@JsonPropertyOrder({"userId", "userName", "followers"})
-public class UserFollowersDTO {
+@JsonPropertyOrder({"userId", "userName", "followed"})
+public class UserFollowingsDTO {
     @JsonProperty("userId")
     private Integer id;
 
     @JsonProperty("userName")
     private String name;
 
+    @JsonProperty("followed")
     @JsonIgnoreProperties({"followers", "followings"})
-    private List<User> followers;
+    private List<User> followings;
 
-    public UserFollowersDTO() {
+    public UserFollowingsDTO() {
     }
 
-    public UserFollowersDTO(Integer id, String name, List<User> followers) {
+    public UserFollowingsDTO(Integer id, String name, List<User> following) {
         this.id = id;
         this.name = name;
-        this.followers = followers;
+        this.followings = following;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public List<User> getFollowers() {
-        return followers;
-    }
-
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setFollowers(List<User> followers) {
-        this.followers = followers;
+    public List<User> getFollowings() {
+        return followings;
+    }
+
+    public void setFollowings(List<User> following) {
+        this.followings = following;
     }
 }
