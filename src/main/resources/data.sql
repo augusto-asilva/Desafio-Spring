@@ -16,15 +16,16 @@ INSERT INTO USERS (id, name) VALUES
 CREATE TABLE USERFOLLOWER (
   user_id INT,
   following_id INT,
+  PRIMARY KEY (user_id,following_id),
   FOREIGN KEY(user_id) REFERENCES USERS(id),
   FOREIGN KEY(following_id) REFERENCES USERS(id)
 );
 
-INSERT INTO USERFOLLOWER (user_id, following_id) VALUES
-  (1, 0),
-  (1, 2),
-  (0, 2),
-  (2, 0);
+-- INSERT INTO USERFOLLOWER (user_id, following_id) VALUES
+--   (1, 0),
+--   (1, 2),
+--   (0, 2),
+--   (2, 0);
   
 CREATE TABLE PRODUCTS (
   id INT AUTO_INCREMENT  PRIMARY KEY,

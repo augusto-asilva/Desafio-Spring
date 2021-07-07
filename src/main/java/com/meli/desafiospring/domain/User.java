@@ -17,7 +17,7 @@ public class User {
             name = "USERFOLLOWER",
             joinColumns = @JoinColumn(name = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "FOLLOWING_ID"))
-    private List<User> followers;
+    private List<User> followings;
     
 
     public User(Integer id, String name) {
@@ -26,6 +26,10 @@ public class User {
     }
 
     public User() {
+    }
+
+    public void addFollowing(User user){
+        this.followings.add(user);
     }
 
     public Integer getId() {
