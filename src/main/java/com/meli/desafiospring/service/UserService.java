@@ -1,6 +1,7 @@
 package com.meli.desafiospring.service;
 
 import com.meli.desafiospring.domain.User;
+import com.meli.desafiospring.dto.FollowerCountDTO;
 import com.meli.desafiospring.exception.AlreadyFollowingException;
 import com.meli.desafiospring.exception.UserNotFoundException;
 import com.meli.desafiospring.repository.UserRepository;
@@ -28,6 +29,14 @@ public class UserService {
         }catch (DataIntegrityViolationException exception){
             throw new AlreadyFollowingException("Usuario: " + user.getName() + " já segue o vendedor: " + userToFollow.getName());
         }
+    }
+
+    public FollowerCountDTO followCount(Integer userId) {
+        FollowerCountDTO dto = repository.countFollower(userId);
+        if (dto == null) {
+            throw new UserNotFoundException("Usuario não encontrado com o id: " + userId);
+        }
+        return dto;
     }
 
 

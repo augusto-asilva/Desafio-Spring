@@ -5,6 +5,7 @@ import com.meli.desafiospring.domain.enums.ProductCategory;
 
 import javax.persistence.*;
 
+@SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
 @Table(name = "PRODUCTS")
 public class Product {
