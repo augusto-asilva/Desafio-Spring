@@ -5,6 +5,7 @@ import com.meli.desafiospring.dto.FollowerCountDTO;
 import com.meli.desafiospring.dto.UserFollowersDTO;
 import com.meli.desafiospring.dto.UserFollowingsDTO;
 import com.meli.desafiospring.exception.AlreadyFollowingException;
+import com.meli.desafiospring.exception.UnfollowException;
 import com.meli.desafiospring.exception.UserNotFoundException;
 import com.meli.desafiospring.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -34,6 +35,16 @@ public class UserService {
         } catch (DataIntegrityViolationException exception) {
             throw new AlreadyFollowingException("Usuario: " + user.getName() + " já segue o vendedor: " + userToFollow.getName());
         }
+    }
+
+    public void unfollow(Integer userId, Integer unfollowingId) {
+        User user = this.findById(userId);
+        User userToUnfollow = this.findById(unfollowingId);
+
+        if (!userToUnfollow.removeFollower(user))
+            throw new UnfollowException("Não foi possível que " + user.getName() + " deixasse de seguir " + userToUnfollow.getName());
+
+        repository.save(user);
     }
 
     public FollowerCountDTO followCount(Integer userId) {

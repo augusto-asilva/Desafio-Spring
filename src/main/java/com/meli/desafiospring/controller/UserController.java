@@ -22,6 +22,12 @@ public class UserController {
         service.follow(userId, userIdToFollow);
     }
 
+    @PostMapping("{userId}/unfollow/{userIdToUnfollow}")
+    @ResponseStatus(HttpStatus.OK)
+    public void unfollowUser(@PathVariable Integer userId, @PathVariable Integer userIdToUnfollow) {
+        service.unfollow(userId, userIdToUnfollow);
+    }
+
     @GetMapping("{userId}/followers/count")
     @ResponseStatus(HttpStatus.OK)
     public FollowerCountDTO getUsers(@PathVariable Integer userId) {
