@@ -24,7 +24,6 @@ public class Post {
     private Product product;
 
     @OneToOne
-//    @JoinColumn(name = "user_id")
     private User user;
 
     public Post(Integer id, LocalDate date, Product product, User user) {
