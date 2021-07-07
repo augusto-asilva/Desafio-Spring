@@ -1,7 +1,6 @@
 package com.meli.desafiospring.domain;
 
-import com.meli.desafiospring.domain.enums.Color;
-import com.meli.desafiospring.domain.enums.ProductCategory;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -12,14 +11,18 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("product_id")
     private int id;
+    @JsonProperty("productName")
     private String name;
-    private ProductCategory type;
+    private String type;
     private String brand;
-    private Color color;
+
+    private String color;
+
     private String notes;
 
-    public Product(int id, String name, ProductCategory type, String brand, Color color, String notes) {
+    public Product(int id, String name, String type, String brand, String color, String notes) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -47,11 +50,11 @@ public class Product {
         this.name = name;
     }
 
-    public ProductCategory getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(ProductCategory type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -63,11 +66,11 @@ public class Product {
         this.brand = brand;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

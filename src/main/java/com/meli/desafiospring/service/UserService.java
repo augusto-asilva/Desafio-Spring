@@ -44,8 +44,7 @@ public class UserService {
         return dto;
     }
 
-
-    private User findById(Integer userId) {
+    public User findById(Integer userId) {
         Optional<User> user = repository.findById(userId);
 
         if (user.isPresent())

@@ -1,39 +1,32 @@
-package com.meli.desafiospring.domain;
+package com.meli.desafiospring.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.meli.desafiospring.domain.Product;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
-@SuppressWarnings("JpaDataSourceORMInspection")
-@Entity
 @Table(name = "POSTS")
-public class Post {
+public class PostDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id_post")
     private Integer id;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate date;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
-    @OneToOne
-    @JoinColumn(name = "PRODUCT_ID")
     @JsonProperty("detail")
     private Product product;
 
-    @OneToOne
-    private User user;
+    private int userId;
 
-    public Post(Integer id, LocalDate date, Product product, User user) {
-        this.id = id;
-        this.date = date;
-        this.product = product;
-        this.user = user;
-    }
-
-    public Post() {
+    public PostDTO() {
     }
 
     public Integer getId() {
@@ -60,12 +53,12 @@ public class Post {
         this.product = product;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
 }
