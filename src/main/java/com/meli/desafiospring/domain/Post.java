@@ -3,6 +3,7 @@ package com.meli.desafiospring.domain;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
 @Table(name = "POSTS")
 public class Post {
@@ -13,10 +14,12 @@ public class Post {
 
     private LocalDateTime date;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToOne
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToOne
     @JoinColumn(name = "USER_ID")
     private User userId;

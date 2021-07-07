@@ -12,6 +12,7 @@ public class User {
     private Integer id;
     private String name;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToMany
     @JoinTable(
             name = "USERFOLLOWER",

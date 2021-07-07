@@ -2,7 +2,6 @@ package com.meli.desafiospring.exception.handler;
 
 import com.meli.desafiospring.dto.ExceptionDTO;
 import com.meli.desafiospring.exception.AlreadyFollowingException;
-import com.meli.desafiospring.exception.UserNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
