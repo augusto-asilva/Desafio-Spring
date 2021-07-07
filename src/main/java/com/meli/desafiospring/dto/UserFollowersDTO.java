@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.meli.desafiospring.domain.User;
 
-import javax.persistence.*;
 import java.util.List;
 
 @JsonPropertyOrder({"userId", "userName", "followers"})

@@ -1,6 +1,5 @@
 package com.meli.desafiospring.controller;
 
-import com.meli.desafiospring.domain.User;
 import com.meli.desafiospring.dto.FollowerCountDTO;
 import com.meli.desafiospring.dto.UserFollowersDTO;
 import com.meli.desafiospring.dto.UserFollowingsDTO;
