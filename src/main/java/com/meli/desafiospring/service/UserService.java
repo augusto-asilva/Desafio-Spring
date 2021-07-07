@@ -52,8 +52,12 @@ public class UserService {
 
 
     public User getFollowers(Integer userId) {
-        var dto = repository.findById(userId);
+        Optional<User> user = repository.findById(userId);
 
-        return dto.get();
+        if (user.isPresent())
+            return user.get();
+
+        throw new UserNotFoundException("Usuario não encontrado com o id: " + userId);
+
     }
 }
