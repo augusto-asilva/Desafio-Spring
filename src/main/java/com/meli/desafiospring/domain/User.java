@@ -14,7 +14,7 @@ public class User {
     private Integer id;
     private String name;
 
-    @JsonIgnoreProperties("followings")
+    @JsonIgnoreProperties({"followings", "followers"})
     @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToMany
     @JoinTable(
@@ -22,6 +22,15 @@ public class User {
             joinColumns = @JoinColumn(name = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "FOLLOWING_ID"))
     private List<User> followings;
+
+    @JsonIgnoreProperties({"followers", "followings"})
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @OneToMany
+    @JoinTable(
+            name = "USERFOLLOWER",
+            joinColumns = @JoinColumn(name = "FOLLOWING_ID"),
+            inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+    private List<User> followers;
 
 
     public User(Integer id, String name) {
@@ -54,5 +63,9 @@ public class User {
 
     public List<User> getFollowings() {
         return followings;
+    }
+
+    public List<User> getFollowers() {
+        return followers;
     }
 }

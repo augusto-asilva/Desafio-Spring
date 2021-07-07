@@ -2,9 +2,11 @@ package com.meli.desafiospring.service;
 
 import com.meli.desafiospring.domain.User;
 import com.meli.desafiospring.dto.FollowerCountDTO;
+import com.meli.desafiospring.dto.UserFollowersDTO;
 import com.meli.desafiospring.exception.AlreadyFollowingException;
 import com.meli.desafiospring.exception.UserNotFoundException;
 import com.meli.desafiospring.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -51,13 +53,24 @@ public class UserService {
     }
 
 
-    public User getFollowers(Integer userId) {
+    public User getFollowing(Integer userId) {
         Optional<User> user = repository.findById(userId);
 
         if (user.isPresent())
             return user.get();
 
         throw new UserNotFoundException("Usuario não encontrado com o id: " + userId);
+
+    }
+
+    public UserFollowersDTO getFollowers(Integer userId) {
+
+        ModelMapper modelMapper = new ModelMapper();
+        User user = this.findById(userId);
+
+        UserFollowersDTO dto = modelMapper.map(user, UserFollowersDTO.class);
+        return dto;
+
 
     }
 }

@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     FollowerCountDTO countFollower(int id);
 
 
-    UserFollowersDTO getUserFollowersById(int id);
+    UserFollowersDTO findUserById(Integer id);
 }
 
 
