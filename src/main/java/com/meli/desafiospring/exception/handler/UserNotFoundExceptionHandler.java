@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class UserNotFoundExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ExceptionDTO> defaultHandler(UserNotFoundException exception){
+    public ResponseEntity<ExceptionDTO> defaultHandler(UserNotFoundException exception) {
         return ResponseEntity.badRequest().body(new ExceptionDTO(exception.getMessage()));
     }
 }

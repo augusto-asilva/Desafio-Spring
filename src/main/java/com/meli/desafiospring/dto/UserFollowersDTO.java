@@ -9,7 +9,9 @@ import java.util.List;
 public interface UserFollowersDTO {
     @Column(name = "NAME")
     String getUserName();
+
     Integer getUserId();
+
     @JoinTable(
             name = "USERFOLLOWER",
             joinColumns = @JoinColumn(name = "USER_ID"),

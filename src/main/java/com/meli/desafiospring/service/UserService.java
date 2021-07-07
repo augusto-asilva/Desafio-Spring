@@ -2,7 +2,6 @@ package com.meli.desafiospring.service;
 
 import com.meli.desafiospring.domain.User;
 import com.meli.desafiospring.dto.FollowerCountDTO;
-import com.meli.desafiospring.dto.UserFollowersDTO;
 import com.meli.desafiospring.exception.AlreadyFollowingException;
 import com.meli.desafiospring.exception.UserNotFoundException;
 import com.meli.desafiospring.repository.UserRepository;
@@ -18,7 +17,7 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public void follow(Integer userId, Integer followingId){
+    public void follow(Integer userId, Integer followingId) {
         User user = this.findById(userId);
 
         User userToFollow = this.findById(followingId);
@@ -27,7 +26,7 @@ public class UserService {
 
         try {
             repository.save(user);
-        }catch (DataIntegrityViolationException exception){
+        } catch (DataIntegrityViolationException exception) {
             throw new AlreadyFollowingException("Usuario: " + user.getName() + " já segue o vendedor: " + userToFollow.getName());
         }
     }
@@ -41,9 +40,7 @@ public class UserService {
     }
 
 
-
-
-    private User findById(Integer userId){
+    private User findById(Integer userId) {
         Optional<User> user = repository.findById(userId);
 
         if (user.isPresent())
@@ -54,8 +51,8 @@ public class UserService {
     }
 
 
-    public User getFollowers(Integer userId){
-        var dto =  repository.findById(userId);
+    public User getFollowers(Integer userId) {
+        var dto = repository.findById(userId);
 
         return dto.get();
     }
