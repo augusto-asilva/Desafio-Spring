@@ -3,6 +3,7 @@ package com.meli.desafiospring.service;
 import com.meli.desafiospring.domain.User;
 import com.meli.desafiospring.dto.FollowerCountDTO;
 import com.meli.desafiospring.dto.UserFollowersDTO;
+import com.meli.desafiospring.dto.UserFollowingsDTO;
 import com.meli.desafiospring.exception.AlreadyFollowingException;
 import com.meli.desafiospring.exception.UserNotFoundException;
 import com.meli.desafiospring.repository.UserRepository;
@@ -18,6 +19,8 @@ public class UserService {
 
     @Autowired
     private UserRepository repository;
+
+    private static final ModelMapper MAPPER = new ModelMapper();
 
     public void follow(Integer userId, Integer followingId) {
         User user = this.findById(userId);
@@ -53,24 +56,13 @@ public class UserService {
     }
 
 
-    public User getFollowing(Integer userId) {
-        Optional<User> user = repository.findById(userId);
-
-        if (user.isPresent())
-            return user.get();
-
-        throw new UserNotFoundException("Usuario não encontrado com o id: " + userId);
-
+    public UserFollowingsDTO getFollowing(Integer userId) {
+        User user = this.findById(userId);
+        return MAPPER.map(user, UserFollowingsDTO.class);
     }
 
     public UserFollowersDTO getFollowers(Integer userId) {
-
-        ModelMapper modelMapper = new ModelMapper();
         User user = this.findById(userId);
-
-        UserFollowersDTO dto = modelMapper.map(user, UserFollowersDTO.class);
-        return dto;
-
-
+        return MAPPER.map(user, UserFollowersDTO.class);
     }
 }
