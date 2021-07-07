@@ -1,7 +1,10 @@
 package com.meli.desafiospring.domain;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.time.LocalDate;
 
 @SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
@@ -10,25 +13,27 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id_post")
     private Integer id;
 
-    private LocalDateTime date;
+    private LocalDate date;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToOne
     @JoinColumn(name = "PRODUCT_ID")
+    @JsonProperty("detail")
     private Product product;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToOne
-    @JoinColumn(name = "USER_ID")
-    private User userId;
+//    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Post(Integer id, LocalDateTime date, Product product, User userId) {
+    public Post(Integer id, LocalDate date, Product product , User user) {
         this.id = id;
         this.date = date;
         this.product = product;
-        this.userId = userId;
+        this.user = user;
     }
 
     public Post() {
@@ -42,11 +47,11 @@ public class Post {
         this.id = id;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -58,11 +63,12 @@ public class Post {
         this.product = product;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
+    
 }
