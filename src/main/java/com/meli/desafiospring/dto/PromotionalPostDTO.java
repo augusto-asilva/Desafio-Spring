@@ -1,59 +1,35 @@
-package com.meli.desafiospring.domain;
+package com.meli.desafiospring.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.meli.desafiospring.domain.Product;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@SuppressWarnings("JpaDataSourceORMInspection")
-@Entity
 @Table(name = "POSTS")
-public class Post implements Comparable<Post> {
+public class PromotionalPostDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id_post")
     private Integer id;
 
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate date;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
-    @OneToOne
-    @JoinColumn(name = "PRODUCT_ID")
     @JsonProperty("detail")
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
-    @OneToOne
-    private User user;
+    private int userId;
 
     private int category;
     private double price;
     private boolean hasPromo;
     private double discount;
 
-    public Post(Integer id, LocalDate date, Product product, User user, int category, double price) {
-        this.id = id;
-        this.date = date;
-        this.product = product;
-        this.user = user;
-        this.category = category;
-        this.price = price;
-        this.hasPromo = false;
-        this.discount = 0.0;
-    }
-
-    public Post(Integer id, LocalDate date, Product product, User user, int category, double price, boolean hasPromo, double discount) {
-        this.id = id;
-        this.date = date;
-        this.product = product;
-        this.user = user;
-        this.category = category;
-        this.price = price;
-        this.hasPromo = hasPromo;
-        this.discount = discount;
-    }
-
-    public Post() {
+    public PromotionalPostDTO() {
     }
 
     public Integer getId() {
@@ -80,12 +56,12 @@ public class Post implements Comparable<Post> {
         this.product = product;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getCategory() {
@@ -118,10 +94,5 @@ public class Post implements Comparable<Post> {
 
     public void setDiscount(double discount) {
         this.discount = discount;
-    }
-
-    @Override
-    public int compareTo(Post o) {
-        return this.getDate().compareTo(o.getDate());
     }
 }

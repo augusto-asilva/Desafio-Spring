@@ -1,6 +1,7 @@
 package com.meli.desafiospring.controller;
 
 import com.meli.desafiospring.dto.PostDTO;
+import com.meli.desafiospring.dto.PromotionalPostDTO;
 import com.meli.desafiospring.dto.UserPostDTO;
 import com.meli.desafiospring.repository.PostRepository;
 import com.meli.desafiospring.service.PostService;
@@ -28,6 +29,12 @@ public class PostController {
     @ResponseStatus(value = HttpStatus.OK)
     public UserPostDTO getRecentPosts(@PathVariable int userId, @RequestParam(defaultValue = "") String order) {
         return postService.getRecentPosts(userId, order);
+    }
+
+    @PostMapping("/newpromopost")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void newPost(@RequestBody PromotionalPostDTO postDto) {
+        postService.savePromotional(postDto);
     }
 
 

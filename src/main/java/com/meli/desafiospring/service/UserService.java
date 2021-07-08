@@ -20,10 +20,9 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    private static final ModelMapper MAPPER = new ModelMapper();
     @Autowired
     private UserRepository repository;
-
-    private static final ModelMapper MAPPER = new ModelMapper();
 
     public void follow(Integer userId, Integer followingId) {
         User user = this.findById(userId);

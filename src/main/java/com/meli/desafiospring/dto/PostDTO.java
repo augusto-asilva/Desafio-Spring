@@ -1,13 +1,16 @@
 package com.meli.desafiospring.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.meli.desafiospring.domain.Product;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Table(name = "POSTS")
+@JsonPropertyOrder({"id_post", "date", "detail", "category", "price"})
 public class PostDTO {
 
     @Id
@@ -22,7 +25,11 @@ public class PostDTO {
     @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
+    @JsonIgnore
     private int userId;
+
+    private int category;
+    private double price;
 
     public PostDTO() {
     }
@@ -59,4 +66,19 @@ public class PostDTO {
         this.userId = userId;
     }
 
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }

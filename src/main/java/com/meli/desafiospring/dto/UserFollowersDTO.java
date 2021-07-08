@@ -31,20 +31,20 @@ public class UserFollowersDTO {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public List<User> getFollowers() {
-        return followers;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<User> getFollowers() {
+        return followers;
     }
 
     public void setFollowers(List<User> followers) {
