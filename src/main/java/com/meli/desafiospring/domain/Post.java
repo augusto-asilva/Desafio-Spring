@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
 @Table(name = "POSTS")
-public class Post {
+public class Post implements Comparable<Post>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,4 +68,8 @@ public class Post {
         this.user = user;
     }
 
+    @Override
+    public int compareTo(Post o) {
+        return this.getDate().compareTo(o.getDate());
+    }
 }

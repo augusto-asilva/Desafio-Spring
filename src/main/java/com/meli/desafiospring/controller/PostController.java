@@ -26,8 +26,8 @@ public class PostController {
 
     @GetMapping("/followed/{userId}/list")
     @ResponseStatus(value = HttpStatus.OK)
-    public UserPostDTO getRecentPosts(@PathVariable int userId) {
-        return postService.getRecentPosts(userId);
+    public UserPostDTO getRecentPosts(@PathVariable int userId, @RequestParam(defaultValue = "") String order) {
+        return postService.getRecentPosts(userId, order);
     }
 
 

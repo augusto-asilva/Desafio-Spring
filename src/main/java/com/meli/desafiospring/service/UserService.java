@@ -70,13 +70,13 @@ public class UserService {
 
     public UserFollowingsDTO getFollowing(Integer userId, String order) {
         User user = this.findById(userId);
-        sortUsers(user.getFollowings(), order);
+        this.sortUsers(user.getFollowings(), order);
         return MAPPER.map(user, UserFollowingsDTO.class);
     }
 
     public UserFollowersDTO getFollowers(Integer userId, String order) {
         User user = this.findById(userId);
-        sortUsers(user.getFollowers(), order);
+        this.sortUsers(user.getFollowers(), order);
         return MAPPER.map(user, UserFollowersDTO.class);
     }
 
