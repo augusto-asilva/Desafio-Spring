@@ -3,6 +3,7 @@ package com.meli.desafiospring.controller;
 import com.meli.desafiospring.dto.PostDTO;
 import com.meli.desafiospring.dto.PromotionalPostDTO;
 import com.meli.desafiospring.dto.UserPostDTO;
+import com.meli.desafiospring.dto.UserProductPromotionalDTO;
 import com.meli.desafiospring.dto.UserPromotionalPostsDTO;
 import com.meli.desafiospring.repository.PostRepository;
 import com.meli.desafiospring.service.PostService;
@@ -16,9 +17,6 @@ public class PostController {
 
     @Autowired
     PostService postService;
-
-    @Autowired
-    PostRepository postRepository;
 
     @PostMapping("/newpost")
     @ResponseStatus(value = HttpStatus.OK)
@@ -43,4 +41,10 @@ public class PostController {
     public UserPromotionalPostsDTO userPromotionalPosts(@PathVariable int userId) {
         return postService.getUserPromotionalPosts(userId);
     }
+
+    @GetMapping("/{id}/countPromo")
+    public UserProductPromotionalDTO getPromotionalProduct(@PathVariable int id){
+        return postService.getPromotion(id);
+    }
+
 }
