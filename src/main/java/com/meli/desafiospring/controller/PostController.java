@@ -1,6 +1,7 @@
 package com.meli.desafiospring.controller;
 
 import com.meli.desafiospring.dto.PostDTO;
+import com.meli.desafiospring.dto.UserPostDTO;
 import com.meli.desafiospring.repository.PostRepository;
 import com.meli.desafiospring.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,11 @@ public class PostController {
     @ResponseStatus(value = HttpStatus.OK)
     public void newPost(@RequestBody PostDTO postDto) {
         postService.save(postDto);
+    }
+
+    @GetMapping("/followed/{userId}/list")
+    @ResponseStatus(value = HttpStatus.OK)
+    public UserPostDTO getRecentPosts(@PathVariable int userId){
+        return postService.getRecentPosts(userId);
     }
 }

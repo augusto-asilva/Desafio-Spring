@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "31052a8a-bd9d-4568-883f-1d61de550cd2",
+		"_postman_id": "77a5ac45-7087-4574-a167-4a3d934b7417",
 		"name": "desafio spring",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/1/follow/0",
+					"raw": "http://localhost:8080/users/1/follow/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -21,7 +21,7 @@
 						"users",
 						"1",
 						"follow",
-						"0"
+						"2"
 					]
 				}
 			},
@@ -106,18 +106,40 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userId\": 1235,\n    \"id_post\": 18,\n    \"date\": \"29-04-2021\",\n    \"detail\": {\n        \"product_id\": 1,\n        \"productName\": \"Cadeira Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}"
+					"raw": "{\n    \"userId\": 2,\n    \"id_post\": 18,\n    \"date\": \"29-06-2021\",\n    \"detail\": {\n        \"product_id\": 1,\n        \"productName\": \"Cadeira Gamer\",\n        \"type\": \"Gamer\",\n        \"brand\": \"Racer\",\n        \"color\": \"Red & Black\",\n        \"notes\": \"Special Edition\"\n    },\n    \"category\": 100,\n    \"price\": 1500.50\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/product/newpost",
+					"raw": "http://localhost:8080/products/newpost",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"product",
+						"products",
 						"newpost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "US0006 - Listar publicacões de vendedores que eu sigo feitas nas últimas duas semanas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/followed/1/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"followed",
+						"1",
+						"list"
 					]
 				}
 			},
@@ -128,27 +150,19 @@
 			"request": {
 				"method": "POST",
 				"header": [],
-				"url": null
-			},
-			"response": []
-		},
-		{
-			"name": "US0006 - Listar publicacões de vendedores que eu sigo feitas nas últimas duas semanas",
-			"request": {
-				"method": "GET",
-				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/products/followed/0/list",
+					"raw": "http://localhost:8080//users/1/unfollow/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"products",
-						"followed",
-						"0",
-						"list"
+						"",
+						"users",
+						"1",
+						"unfollow",
+						"2"
 					]
 				}
 			},
