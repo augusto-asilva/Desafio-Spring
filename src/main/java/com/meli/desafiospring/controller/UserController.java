@@ -37,14 +37,16 @@ public class UserController {
 
     @GetMapping("{userId}/followed/list")
     @ResponseStatus(HttpStatus.OK)
-    public UserFollowingsDTO getFollowed(@PathVariable Integer userId) {
-        return service.getFollowing(userId);
+    public UserFollowingsDTO getFollowed(@PathVariable Integer userId, @RequestParam(defaultValue = "") String order) {
+        return service.getFollowing(userId, order);
     }
 
     @GetMapping("{userId}/followers/list")
     @ResponseStatus(HttpStatus.OK)
-    public UserFollowersDTO getFollowers(@PathVariable Integer userId) {
-        return service.getFollowers(userId);
+    public UserFollowersDTO getFollowers(@PathVariable Integer userId, @RequestParam(defaultValue = "") String order) {
+        return service.getFollowers(userId, order);
     }
+
+
 
 }

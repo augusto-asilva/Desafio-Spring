@@ -50,4 +50,9 @@ public class UserFollowersDTO {
     public void setFollowers(List<User> followers) {
         this.followers = followers;
     }
+
+    public void sortFollowers(String order){
+
+    }
+
 }

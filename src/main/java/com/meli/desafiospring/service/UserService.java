@@ -8,11 +8,14 @@ import com.meli.desafiospring.exception.AlreadyFollowingException;
 import com.meli.desafiospring.exception.UnfollowException;
 import com.meli.desafiospring.exception.UserNotFoundException;
 import com.meli.desafiospring.repository.UserRepository;
+import com.meli.desafiospring.utils.SortUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -66,13 +69,25 @@ public class UserService {
     }
 
 
-    public UserFollowingsDTO getFollowing(Integer userId) {
+    public UserFollowingsDTO getFollowing(Integer userId, String order) {
         User user = this.findById(userId);
+        sortUsers(user.getFollowings(), order);
         return MAPPER.map(user, UserFollowingsDTO.class);
     }
 
-    public UserFollowersDTO getFollowers(Integer userId) {
+    public UserFollowersDTO getFollowers(Integer userId, String order) {
         User user = this.findById(userId);
+        sortUsers(user.getFollowers(), order);
         return MAPPER.map(user, UserFollowersDTO.class);
     }
+
+
+
+    private void sortUsers(List<User> users, String order){
+        if(order.equals("name_asc"))
+            SortUtil.sort(users);
+        else if (order.equals("name_desc"))
+            SortUtil.sortDesc(users);
+    }
+
 }

@@ -29,4 +29,6 @@ public class PostController {
     public UserPostDTO getRecentPosts(@PathVariable int userId){
         return postService.getRecentPosts(userId);
     }
+
+
 }
