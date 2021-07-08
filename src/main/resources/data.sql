@@ -52,12 +52,16 @@ CREATE TABLE POSTS
     date       date,
     product_id INT,
     user_id    INT,
+    category   INT,
+    price      NUMBER(6, 2),
+    has_promo  BOOLEAN      DEFAULT false,
+    discount   NUMBER(3, 3) DEFAULT 0.0,
     FOREIGN KEY (user_id) REFERENCES USERS (id),
     FOREIGN KEY (product_id) REFERENCES PRODUCTS (id)
 );
 
 
-INSERT INTO POSTS (id, date, product_id, user_id)
-VALUES (0, '2021-07-05', 0, 1),
-       (1, '2021-07-06', 1, 0);
+INSERT INTO POSTS (id, date, category, price, product_id, user_id)
+VALUES (0, '2021-07-05', 39, 10.0, 0, 1),
+       (1, '2021-07-06', 29, 9.90, 1, 0);
     
