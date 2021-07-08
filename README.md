@@ -14,6 +14,6 @@
 - [x] US 0007: Ser capaz de realizar a ação de “Deixar de seguir” (parar de seguir) um determinado vendedor.
 - [x] US 0008: Ordem alfabética crescente e decrescente
 - [x] US 0009: Classificar por data crescente e decrescente
-- [ ] US 0010:  Realizar a publicação de um novo produto promocional
-- [ ] US 0011: Obtenha o quantidade de produtos promocionais de um vendedor específico
-- [ ] US 0012: Obter uma lista de todos os produtos promocionais de um vendedor específico
+- [x] US 0010:  Realizar a publicação de um novo produto promocional
+- [x] US 0011: Obtenha o quantidade de produtos promocionais de um vendedor específico
+- [x] US 0012: Obter uma lista de todos os produtos promocionais de um vendedor específico
