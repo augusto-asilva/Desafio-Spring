@@ -3,6 +3,7 @@ package com.meli.desafiospring.controller;
 import com.meli.desafiospring.dto.PostDTO;
 import com.meli.desafiospring.dto.PromotionalPostDTO;
 import com.meli.desafiospring.dto.UserPostDTO;
+import com.meli.desafiospring.dto.UserPromotionalPostsDTO;
 import com.meli.desafiospring.repository.PostRepository;
 import com.meli.desafiospring.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,9 @@ public class PostController {
         postService.savePromotional(postDto);
     }
 
-
+    @GetMapping("/{userId}/list")
+    @ResponseStatus(value = HttpStatus.OK)
+    public UserPromotionalPostsDTO userPromotionalPosts(@PathVariable int userId) {
+        return postService.getUserPromotionalPosts(userId);
+    }
 }

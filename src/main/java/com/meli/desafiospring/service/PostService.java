@@ -5,9 +5,11 @@ import com.meli.desafiospring.domain.User;
 import com.meli.desafiospring.dto.PostDTO;
 import com.meli.desafiospring.dto.PromotionalPostDTO;
 import com.meli.desafiospring.dto.UserPostDTO;
+import com.meli.desafiospring.dto.UserPromotionalPostsDTO;
 import com.meli.desafiospring.repository.PostRepository;
 import com.meli.desafiospring.utils.SortUtil;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.config.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +55,26 @@ public class PostService {
 
         return new UserPostDTO(id, postDto);
 
+    }
+
+    public UserPromotionalPostsDTO getUserPromotionalPosts(int userId) {
+        User user = userService.findById(userId);
+
+        List<Post> userPromotionalPosts = postRepository.findPostsByUserAndHasPromoIsTrue(user);
+
+        List<PromotionalPostDTO> promotionalPostsDto = convertToPromotionalPostsDto(userPromotionalPosts);
+
+        return new UserPromotionalPostsDTO(user.getId(), user.getName(), promotionalPostsDto);
+    }
+
+    private List<PromotionalPostDTO> convertToPromotionalPostsDto(List<Post> userPromotionalPosts) {
+        List<PromotionalPostDTO> postsDto = new ArrayList<>();
+
+        for (Post post : userPromotionalPosts) {
+            postsDto.add(MAPPER.map(post, PromotionalPostDTO.class));
+        }
+
+        return postsDto;
     }
 
     private List<PostDTO> convertToPostDto(List<Post> posts) {

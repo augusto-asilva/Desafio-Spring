@@ -1,12 +1,14 @@
 package com.meli.desafiospring.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import javax.persistence.*;
 
 @SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
 @Table(name = "PRODUCTS")
+@JsonPropertyOrder({"product_id", "productName", "type", "brand", "color", "notes"})
 public class Product {
 
     @Id
