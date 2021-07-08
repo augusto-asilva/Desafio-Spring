@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,12 +81,10 @@ public class UserService {
     }
 
 
-
-    private void sortUsers(List<User> users, String order){
-        if(order.equals("name_asc"))
+    private void sortUsers(List<User> users, String order) {
+        if (order.equals("name_asc"))
             SortUtil.sort(users);
         else if (order.equals("name_desc"))
             SortUtil.sortDesc(users);
     }
-
 }

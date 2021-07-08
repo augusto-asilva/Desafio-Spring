@@ -3,7 +3,6 @@ package com.meli.desafiospring.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Comparator;
 import java.util.List;
 
 @Entity
@@ -69,7 +68,6 @@ public class User implements Comparable<User> {
     public List<User> getFollowers() {
         return followers;
     }
-
 
 
     public boolean removeFollower(User userToUnfollow) {

@@ -23,11 +23,11 @@ CREATE TABLE USERFOLLOWER
     FOREIGN KEY (following_id) REFERENCES USERS (id)
 );
 
- INSERT INTO USERFOLLOWER (user_id, following_id) VALUES
-   (1, 0),
-   (1, 2),
-   (0, 2),
-   (2, 0);
+INSERT INTO USERFOLLOWER (user_id, following_id)
+VALUES (1, 0),
+       (1, 2),
+       (0, 2),
+       (2, 0);
 
 CREATE TABLE PRODUCTS
 (
