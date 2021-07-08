@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.meli.desafiospring.domain.Product;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Table(name = "POSTS")
@@ -22,6 +19,7 @@ public class PostDTO {
     private LocalDate date;
 
     @JsonProperty("detail")
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
     private int userId;
