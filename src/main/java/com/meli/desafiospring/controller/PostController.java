@@ -5,7 +5,6 @@ import com.meli.desafiospring.dto.PromotionalPostDTO;
 import com.meli.desafiospring.dto.UserPostDTO;
 import com.meli.desafiospring.dto.UserProductPromotionalDTO;
 import com.meli.desafiospring.dto.UserPromotionalPostsDTO;
-import com.meli.desafiospring.repository.PostRepository;
 import com.meli.desafiospring.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
