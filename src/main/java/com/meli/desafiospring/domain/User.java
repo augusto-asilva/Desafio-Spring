@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "USERS")
-public class User {
+public class User implements Comparable<User> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -69,7 +69,13 @@ public class User {
         return followers;
     }
 
+
     public boolean removeFollower(User userToUnfollow) {
         return this.followers.remove(userToUnfollow);
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return this.getName().compareTo(o.getName());
     }
 }
